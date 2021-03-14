@@ -1,6 +1,9 @@
 # CleanUp-Steam-Fixer ( Windows Only )
 Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error in CSGO, check Windows for inconsistencies ( And fix them ) and Updates.
 
+## Will it FULLY FIX my problem?
+While it is not 100% guarantee it will fix your problem, it is definitely one of the easiest ways to check multiple problems at once. But most of the cases are contained here, so I am confident it will be fixed.
+
 # What's the use?
 Steam becomes corrupted and bulky with the passing of time ( Either by Updates, wrong system shutdowns, system errors, friends -or ourself- changing profile picture too much and so on ).
 Sometimes we get ["VAC AUTHENTICATION ERROR"](https://support.steampowered.com/kb_article.php?ref=2117-ILZV-2837) on CSGO - Don't know about other games.
@@ -48,5 +51,5 @@ Step 7 : Press "S" and wait for the console to tell you when to open Steam. Let 
 
 Step 8 : Hope for the best.
 
-## Will it FULLY FIX my problem?
-While it is not 100% guarantee it will fix your problem, it is definitely one of the easiest ways to check multiple problems at once. But most of the cases are contained here, so I am confident it will be fixed.
+# How do I know it is safe?
+Batch files are nothing more than a bunch of default windows commands put all together. You can read my file by doing right click on it and selecting "Edit", you can even change it yourself. If you do change it and send it to others, remember to commend me on your program.
