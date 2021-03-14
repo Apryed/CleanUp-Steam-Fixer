@@ -2,7 +2,8 @@
 Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error in CSGO, check Windows for inconsistencies ( And fix them ) and Updates.
 
 # What's the use?
-Steam becomes corrupted and bulky with the passing of time ( Either by Updates, wrong system shutdowns, system errors, friends -or ourself- changing profile picture too much and so on ). Sometimes we get ["VAC AUTHENTICATION ERROR"](https://support.steampowered.com/kb_article.php?ref=2117-ILZV-2837) on CSGO - Don't know about other games.
+Steam becomes corrupted and bulky with the passing of time ( Either by Updates, wrong system shutdowns, system errors, friends -or ourself- changing profile picture too much and so on ).
+Sometimes we get ["VAC AUTHENTICATION ERROR"](https://support.steampowered.com/kb_article.php?ref=2117-ILZV-2837) on CSGO - Don't know about other games.
 In order to make it easier for users I collected all the possible fixes from Steam Support page ( Of course it won't be uninstalling any programs as the Page suggest ) and added a few of my own.
 
 ## Explained
