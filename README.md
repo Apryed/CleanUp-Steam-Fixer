@@ -46,4 +46,7 @@ Step 6 : Do steps 2-4 again.
 
 Step 7 : Press "S" and wait for the console to tell you when to open Steam. Let it **FULLY** open ( It will need to redownload its files ) and then press any key.
 
-Step 8 : Enjoy your gaming.
+Step 8 : Hope for the best.
+
+## Will it FULLY FIX my problem?
+While it is not 100% guarantee it will fix your problem, it is definitely one of the easiest ways to check multiple problems at once. But most of the cases are contained here, so I am confident it will be fixed.
