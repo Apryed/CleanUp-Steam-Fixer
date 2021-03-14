@@ -37,11 +37,11 @@ After that, it restart the PC on command so fixes take place.
 # Ok, but HOW DO I USE IT?
 Step 1 : [Download the .bat file](../../releases/latest).
 
-Step 2 : Run it as Administrator ( Anywhere you like )
+Step 2 : Run it as Administrator ( Anywhere you like ).
 
 Step 3 : Select language.
 
-Step 4 : Insert Steam Installation folder. Default in 32 bits OS **%PROGRAMFILES%\Steam**, Default in 64 bits OS **%PROGRAMFILES(X86)%\Steam**.
+Step 4 : Insert Steam Installation folder. Default in 32 bits OS "**%PROGRAMFILES%\Steam**", Default in 64 bits OS "**%PROGRAMFILES(X86)%\Steam**" .
 
 Step 5 : Press "N" and wait to restart once ( Press any key at the end ).
 
