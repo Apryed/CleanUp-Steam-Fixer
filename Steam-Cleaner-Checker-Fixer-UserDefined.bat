@@ -1,6 +1,19 @@
 @echo off
-title Steam Cleaner, Checker and Fixer By Apryed - v1.0.0
+setlocal enableextensions enabledelayedexpansion
+%~d0
+pushd %~dp0
+set "Tit=Steam Cleaner, Checker and Fixer By Apryed - v1.2.0"
+title %Tit%
 Color A
+for /f "tokens=9 delims=," %%a in ('tasklist /fi "imagename eq cmd.exe" /v /fo:csv /nh ^| findstr /r /c:".*%Tit%[^,]*$" ') do set Adm=%%a
+IF %Adm:~1,5% EQU Admin GOTO LANGUAGE
+cls
+echo I require Administrator Rights to run.
+echo.
+echo Please, run me as Admin so I can work properly.
+echo Thanks, bye.
+pause >nul
+exit
 :LANGUAGE
 cls
 echo ============================
@@ -10,7 +23,7 @@ echo ^| 2. Spanish               ^|
 echo ============================
 CHOICE /C 12 /M "Language : "
 SET LANG=%ERRORLEVEL%
-IF %LANG% EQU 2 title Limpiador, Comprobador y reparador de Steam por Apryed - v1.0.0
+IF %LANG% EQU 2 title Limpiador, Comprobador y reparador de Steam por Apryed - v1.2.0
 cls
 IF %LANG% EQU 1 echo Insert Steam installation folder path
 IF %LANG% EQU 1 echo  Ex.: C:\Program Files(x86)\Steam
@@ -32,7 +45,6 @@ IF %LANG% EQU 1 CHOICE /M "Do you want to go to Part 2"
 IF %LANG% EQU 2 CHOICE /M "Quiere ir a la Parte 2"
 IF %ERRORLEVEL% == 1 GOTO Part2
 cls
-pushd %~dp0
 IF %LANG% EQU 1 echo Part 1/2
 IF %LANG% EQU 1 echo Step 1/7
 IF %LANG% EQU 1 echo Closing Steam
@@ -48,10 +60,13 @@ IF %LANG% EQU 1 echo Cleaning Steam
 IF %LANG% EQU 2 echo Paso 2/7
 IF %LANG% EQU 2 echo Limpiando Steam
 pushd %SteamPath%
-dir /a /b | findstr "ssfn" > Z.txt
-for /f "tokens=1*delims=[]" %%a in ('find /n /v "" Z.txt') do set "entry%%a=%%b"
+set /a CountSsfn=0
+for /f "tokens=1*delims=[]" %%a in ('dir /a /b ^| findstr "ssfn"') do (
+	set entry!CountSsfn!=%%a
+	set /a CountSsfn+=1
+)
 for /D %%a in (*.*) do if not "%%a"=="config" if not "%%a"=="steamapps" if not "%%a"=="userdata" RD /s /q "%%a"
-for %%a in (*.*) do if not "%%a"=="Steam.exe" if not "%%a"=="steam.exe" if not "%%a"=="uninstall.exe" if not "%%a"=="Uninstall.exe" if not "%%a"=="%entry1%" if not "%%a"=="%entry2%" DEL /F /Q "%%a"
+for %%a in (*.*) do if not "%%a"=="Steam.exe" if not "%%a"=="steam.exe" if not "%%a"=="uninstall.exe" if not "%%a"=="Uninstall.exe" if not "%%a"=="%entry0%" if not "%%a"=="%entry1%" DEL /F /Q "%%a"
 echo.
 echo.
 IF %LANG% EQU 1 echo Step 3/7
@@ -93,8 +108,12 @@ SFC /scannow
 echo.
 echo.
 cls
-IF %LANG% EQU 1 echo Your pc is going to be restarted. Save anything important before continuing. Press any key when you are ready...
-IF %LANG% EQU 2 echo Su PC se va a reinciar. Salve cualquier cosa importante antes de continuar. Pulse cualquier tecla cuando este listo...
+IF %LANG% EQU 1 echo Your pc is going to be restarted. Save anything important before continuing.
+IF %LANG% EQU 1 echo Relaunch me after your pc has restarted.
+IF %LANG% EQU 1 echo Press any key when you are ready...
+IF %LANG% EQU 2 echo Su PC se va a reinciar. Salve cualquier cosa importante antes de continuar.
+IF %LANG% EQU 2 echo Vuelva a ejecutarme cuando su pc se haya reiniciado.
+IF %LANG% EQU 2 echo Pulse cualquier tecla cuando este list@...
 pause >nul
 shutdown /f /r /t 0
 exit
