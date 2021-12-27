@@ -35,7 +35,7 @@ After that, it restart the PC on command so fixes take place.
 
 
 # Ok, but HOW DO I USE IT?
-Step 1 : [Download the .bat file](../../releases/latest).
+Step 1 : Download the .bat file you want [Manual](../../releases/latest/Steam-Cleaner-Checker-Fixer-UserDefined.bat) or [Automatic](../../releases/latest/Steam-Cleaner-Checker-Fixer.bat).
 
 Step 2 : Run it as Administrator ( Anywhere you like ).
 
