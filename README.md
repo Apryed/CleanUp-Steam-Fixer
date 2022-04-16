@@ -37,19 +37,21 @@ After that, it restart the PC on command so fixes take place.
 # Ok, but HOW DO I USE IT?
 Step 1 : Download the .bat file you want [Manual](../../releases/latest/download/Steam-Cleaner-Checker-Fixer-UserDefined.bat) or [Automatic](../../releases/latest/download/Steam-Cleaner-Checker-Fixer.bat).
 
-Step 2 : Run it as Administrator ( Anywhere you like ).
+Step 2 : Right click the downloaded file and click on Properties, then click "Unlock" on the bottom right corner and accept.
 
-Step 3 : Select language.
+Step 3 : Now run it as Administrator ( Right click the file ).
 
-Step 4 : Insert Steam Installation folder. Default in 32 bits OS "**%PROGRAMFILES%\Steam**", Default in 64 bits OS "**%PROGRAMFILES(X86)%\Steam**" .
+Step 4 : Select language.
 
-Step 5 : Press "N" and wait to restart once ( Press any key at the end ).
+Step 5 : Insert Steam Installation folder. Default in 32 bits OS "**%PROGRAMFILES%\Steam**", Default in 64 bits OS "**%PROGRAMFILES(X86)%\Steam**" .
 
-Step 6 : Do steps 2-4 again.
+Step 6 : Press "N" and wait to restart once ( Press any key at the end ).
 
-Step 7 : Press "S" and wait for the console to tell you when to open Steam. Let it **FULLY** open ( It will need to redownload its files ) and then press any key.
+Step 7 : Do steps 2-4 again.
 
-Step 8 : Hope for the best.
+Step 8 : Press "S" and wait for the console to tell you when to open Steam. Let it **FULLY** open ( It will need to redownload its files ) and then press any key.
+
+Step 9 : Hope for the best.
 
 # How do I know it is safe?
 Batch files are nothing more than a bunch of default windows commands put all together. You can read my file by doing right click on it and selecting "Edit", you can even change it yourself. If you do change it and send it to others, remember to commend me on your program.
