@@ -20,7 +20,7 @@ $script:MSGs = DATA { ConvertFrom-StringData -StringData @'
 13=1/2 - 4/6 - Deep Checking Windows for corrupted data...
 14=1/2 - 5/6 - Fixing Windows Health...
 15=1/2 - 6/6 - Checking/Repairing OS...
-16=Scheduling task for Part 2
+16=Scheduling task for part 2
 17=Your pc is going to be restarted. Save anything important before continuing.\n\nPress any key when you are ready...
 18=2/2 - 1/3 - Renewing IP and DNS...
 19=2/2 - 2/3 - Repairing Steam Service...\nSteam will start now.
@@ -31,13 +31,12 @@ Part1=Part 1/2
 Part2=Part 2/2
 Yes=Yes
 No=No
-Bye1=Bye bye.
-Bye2=Please, came again once you really want to refresh Steam.
+Bye=Please, came again once you really want to refresh Steam.
 Title={0} By Apryed - v0.1.2b_18-01-2025
 '@}
+$host.ui.RawUI.WindowTitle = $([string]::Format($MSGs.'TITLE',$TaskName))
 # Imports Languages
 Import-LocalizedData -BindingVariable "MSGs" -BaseDirectory "$($PSScriptRoot)\Langs" -FileName "Msgs.psd1" -ErrorAction:SilentlyContinue
-$host.ui.RawUI.WindowTitle = $([string]::Format($MSGs.'TITLE',$TaskName))
 # Check if PowerShell was launched as Admin
 Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)){
 	$True {
@@ -135,7 +134,7 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 					}
 					DEFAULT {
 						# QUIT Without Working
-						Write-Host $([string]::Format($MSGs.'Bye2'))
+						Write-Host $([string]::Format($MSGs.'Bye'))
 					}
 				}
 			}
