@@ -32,7 +32,7 @@ Yes=Yes
 No=No
 Bye1=Bye bye.
 Bye2=Please, came again once you really want to refresh Steam.
-Title=Steam Cleaner By Apryed - v0.1_17-01-2025
+Title=Steam Cleaner By Apryed - v0.1.2_18-01-2025
 '@}
 # Imports Languages
 Import-LocalizedData -BindingVariable "MSGs" -BaseDirectory "$($PSScriptRoot)\Langs" -FileName "Msgs.psd1" -ErrorAction:SilentlyContinue
@@ -148,7 +148,10 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 				Get-NetAdapter | Foreach-object { Enable-NetAdapter -Name $_.Name }
 				# Repairing Steam Service
 				Write-Host $([string]::Format($MSGs.'19'))
-				Start-Process "${PathSteam}\steam.exe"
+				while ( Get-Process "Steam" 2>$null -Not $True ){
+					Start-Process "${PathSteam}\steam.exe"
+					Start-Sleep -Seconds 10
+				}
 				Write-Host $([string]::Format($MSGs.'20'))
 				[System.Console]::ReadKey($true) | Out-Null
 				# Fully Close Steam AGAIN

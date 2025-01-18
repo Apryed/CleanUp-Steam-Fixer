@@ -5,7 +5,10 @@ It also includes the new way on how steam handles account signatures.
 
 Note: Batch file SHOULD work fine, will test if it doesn't fail while testing if CMD has elevated rights.
 
-If in need, you can always install the latest version of [&#34;PowerShell&#34;](https://learn.microsoft.com/es-es/powershell/scripting/install/installing-powershell-on-windows). Current latest PowerShell version: 7.4.6.
+If in need, you can always install the latest version of "[PowerShell](https://learn.microsoft.com/es-es/powershell/scripting/install/installing-powershell-on-windows)". Current latest PowerShell version: 7.4.6.
+
+Note 2: PowerShell 5.1 requieres `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` first in order to execute the script.
+Nota 3: Will create a way to execute it a few clicks for those who are not instructed 
 
 # CleanUp-Steam-Fixer ( Windows Only )
 
