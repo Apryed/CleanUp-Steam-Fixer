@@ -133,7 +133,7 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 						$Principal = New-ScheduledTaskPrincipal -GroupId "S-1-5-32-544" -RunLevel Highest
 						$Trigger = New-ScheduledTaskTrigger -AtLogon
 						$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
-						Register-ScheduledTask -Action $Action -Principal $Principal -Trigger $Trigger -Settings $Settings -TaskName $TaskName -Description "${TaskName} Task"
+						Register-ScheduledTask -Action $Action -Principal $Principal -Trigger $Trigger -Settings $Settings -TaskName $TaskName -Description "${TaskName} Task" | Out-Null
 						Write-Host $([string]::Format($MSGs.'17'))
 						[System.Console]::ReadKey($true) | Out-Null
 						Restart-Computer -Force
