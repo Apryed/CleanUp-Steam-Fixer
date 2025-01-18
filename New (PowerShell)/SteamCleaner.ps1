@@ -145,6 +145,7 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 				Get-NetAdapter | Foreach-object { Disable-NetAdapter -Name $_.Name -Confirm:$false }
 				Clear-DnsClientCache
 				Get-NetAdapter | Foreach-object { Enable-NetAdapter -Name $_.Name }
+				Start-Sleep -Seconds 10
 				# Repairing Steam Service
 				Write-Host $([string]::Format($MSGs.'19'))
 				while ( -Not (Get-Process "Steam" -ErrorAction SilentlyContinue) ){
