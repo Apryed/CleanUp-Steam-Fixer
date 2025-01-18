@@ -105,8 +105,7 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 						Write-Host $([string]::Format($MSGs.'11'))
 						Get-ChildItem -Path $SteamPath | Where-Object { $_.Name -notin "config", "steamapps", "userdata", "config", "steamapps", "userdata", "steam.exe", "uninstall.exe", "steam.signatures" } | Remove-Item -Recurse -Force
 						# Default Windows Start Parameters
-						$SecureBootStatus = (Get-CimInstance -Namespace "root\WMI" -ClassName "MS_SecureBoot").SecureBootEnabled
-						if ($SecureBootStatus -eq $true) {
+						if (Confirm-SecureBootUEFI) {
 							Write-Host $([string]::Format($MSGs.'12a'))
 						} else {
 							Write-Host $([string]::Format($MSGs.'12b'))
