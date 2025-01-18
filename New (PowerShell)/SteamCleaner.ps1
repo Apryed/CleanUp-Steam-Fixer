@@ -2,6 +2,7 @@ param (
 	[string]$PathSteam,
 	[switch]$Part
 )
+$script:TaskName = "Steam Cleaner"
 $script:MSGs = DATA { ConvertFrom-StringData -StringData @'
 # English strings
 1=This Program requieres Administrator permissions to run properly.\nClosing program...
@@ -32,11 +33,11 @@ Yes=Yes
 No=No
 Bye1=Bye bye.
 Bye2=Please, came again once you really want to refresh Steam.
-Title=Steam Cleaner By Apryed - v0.1.2_18-01-2025
+Title={0} By Apryed - v0.1.2b_18-01-2025
 '@}
 # Imports Languages
 Import-LocalizedData -BindingVariable "MSGs" -BaseDirectory "$($PSScriptRoot)\Langs" -FileName "Msgs.psd1" -ErrorAction:SilentlyContinue
-$host.ui.RawUI.WindowTitle = $([string]::Format($MSGs.'TITLE'))
+$host.ui.RawUI.WindowTitle = $([string]::Format($MSGs.'TITLE',$TaskName))
 # Check if PowerShell was launched as Admin
 Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)){
 	$True {
@@ -120,7 +121,6 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 						SFC /scannow
 						# Scheduling Task
 						Write-Host $([string]::Format($MSGs.'16'))
-						$TaskName = "Steam Cleaner"
 						if (Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue) {
 							Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
 						}
@@ -148,9 +148,9 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 				Get-NetAdapter | Foreach-object { Enable-NetAdapter -Name $_.Name }
 				# Repairing Steam Service
 				Write-Host $([string]::Format($MSGs.'19'))
-				while ( Get-Process "Steam" 2>$null -Not $True ){
+				while ( -Not (Get-Process "Steam" -ErrorAction SilentlyContinue) ){
 					Start-Process "${PathSteam}\steam.exe"
-					Start-Sleep -Seconds 10
+					Start-Sleep -Seconds 5
 				}
 				Write-Host $([string]::Format($MSGs.'20'))
 				[System.Console]::ReadKey($true) | Out-Null
@@ -166,18 +166,10 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 				}
 				Switch ([Environment]::Is64BitProcess) {
 					$True{
-						Get-ChildItem -Path "${env:ProgramFiles(x86)}\Common Files\Steam" | Where-Object { $_.Name -notin "drivers" } | Remove-Item -Recurse -Force
-						Copy-Item -Path "${PathSteam}\bin\drivers.exe", "${PathSteam}\bin\secure_desktop_capture.exe", "${PathSteam}\bin\service_current_versions.vdf", "${PathSteam}\bin\service_minimum_versions.vdf", "${PathSteam}\bin\steamservice.dll", "${PathSteam}\bin\steamservice.exe", "${PathSteam}\bin\steamxboxutil64.exe" -Destination "${env:ProgramFiles(x86)}\Common Files\Steam"
-						Rename-Item -Path "${env:ProgramFiles(x86)}\Common Files\Steam\service_current_versions.vdf" -NewName "service_default_Public_versions.vdf"
-						Rename-Item -Path "${env:ProgramFiles(x86)}\Common Files\Steam\steamservice.dll" -NewName "SteamService.dll"
-						Start-Process -FilePath "${env:ProgramFiles(x86)}\Common Files\Steam\SteamService.exe" -ArgumentList "/repair" -Wait
+						CopyCom ${env:ProgramFiles(x86)} ${PathSteam}
 					}
 					$False{
-						Get-ChildItem -Path "${env:ProgramFiles}\Common Files\Steam" | Where-Object { $_.Name -notin "drivers" } | Remove-Item -Recurse -Force
-						Copy-Item -Path "${PathSteam}\bin\drivers.exe", "${PathSteam}\bin\secure_desktop_capture.exe", "${PathSteam}\bin\service_current_versions.vdf", "${PathSteam}\bin\service_minimum_versions.vdf", "${PathSteam}\bin\steamservice.dll", "${PathSteam}\bin\steamservice.exe", "${PathSteam}\bin\steamxboxutil.exe" -Destination "${env:ProgramFiles}\Common Files\Steam"
-						Rename-Item -Path "${env:ProgramFiles}\Common Files\Steam\service_current_versions.vdf" -NewName "service_default_Public_versions.vdf"
-						Rename-Item -Path "${env:ProgramFiles}\Common Files\Steam\steamservice.dll" -NewName "SteamService.dll"
-						Start-Process -FilePath "${env:ProgramFiles}\Common Files\Steam\SteamService.exe" -ArgumentList "/repair" -Wait
+						CopyCom ${env:ProgramFiles} ${PathSteam}
 					}
 				}
 				Start-Process -FilePath "${PathSteam}\bin\SteamService.exe" -ArgumentList "/repair" -Wait
@@ -196,7 +188,6 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 				Get-ChildItem -Path $PathSteam | Where-Object { $_.Name -in "*.old", ".crash" } | Remove-Item -Force
 				Write-Host $([string]::Format($MSGs.'22'))
 				[System.Console]::ReadKey($true) | Out-Null
-				$TaskName = "Steam Cleaner"
 				if (Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue) {
 					Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
 				}

@@ -18,10 +18,17 @@ function DisplayMenu($Data){
 		Write-Host "$i - $($Data[1][$i].Name)"
 	}
 	Write-Host `r`n
-	$uCh = Read-Host "Enter your choice"
+	$uCh = Read-Host $([string]::Format($MDM.'1'))
 	if ( -Not ($Data[1][$uCh])){
-		Write-Host "`r`nInvalid choice. Please try again.`r`n"
+		Write-Host $([string]::Format($MDM.'2'))
 		return DisplayMenu $Data
 	}
 	return $uCh, $Data[1][$uCh].Name
+}
+function CopyCom($Dir,$Path){
+	Get-ChildItem -Path "${Dir}\Common Files\Steam" | Where-Object { $_.Name -notin "drivers" } | Remove-Item -Recurse -Force
+	Copy-Item -Path "${Path}\bin\drivers.exe", "${Path}\bin\secure_desktop_capture.exe", "${Path}\bin\service_current_versions.vdf", "${Path}\bin\service_minimum_versions.vdf", "${Path}\bin\steamservice.dll", "${Path}\bin\steamservice.exe", "${Path}\bin\steamxboxutil64.exe" -Destination "${Dir}\Common Files\Steam"
+	Rename-Item -Path "${Dir}\Common Files\Steam\service_current_versions.vdf" -NewName "service_default_Public_versions.vdf"
+	Rename-Item -Path "${Dir}\Common Files\Steam\steamservice.dll" -NewName "SteamService.dll"
+	Start-Process -FilePath "${Dir}\Common Files\Steam\SteamService.exe" -ArgumentList "/repair" -Wait
 }

@@ -1,3 +1,6 @@
 @echo off
-PowerShell.exe -NoProfile -ExecutionPolicy RemoteSigned -Scope Process -File ".\SteamCleaner.ps1"
+pushd %~dp0
+PowerShell.exe -command {Get-ChildItem -Path "%~dp0" -Recurse | Unlock-File}
+REM PowerShell.exe -NoProfile -ExecutionPolicy RemoteSigned -File "%~dp0SteamCleaner.ps1"
+popd
 pause
