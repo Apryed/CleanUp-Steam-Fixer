@@ -16,7 +16,8 @@ $script:MSGs = DATA { ConvertFrom-StringData -StringData @'
 9=Would you like to try again?
 10=1/2 - 1/6 - Closing Steam...
 11=1/2 - 2/6 - Cleaning Steam...
-12=1/2 - 3/6 - Resetting PC start options to default...
+12a=1/2 - 3/6 - Skipping - SecureBoot is Enabled.
+12b=1/2 - 3/6 - Resetting PC start options to default...
 13=1/2 - 4/6 - Deep Checking Windows for corrupted data...
 14=1/2 - 5/6 - Fixing Windows Health...
 15=1/2 - 6/6 - Checking/Repairing OS...
@@ -104,11 +105,16 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 						Write-Host $([string]::Format($MSGs.'11'))
 						Get-ChildItem -Path $SteamPath | Where-Object { $_.Name -notin "config", "steamapps", "userdata", "config", "steamapps", "userdata", "steam.exe", "uninstall.exe", "steam.signatures" } | Remove-Item -Recurse -Force
 						# Default Windows Start Parameters
-						Write-Host $([string]::Format($MSGs.'12'))
-						bcdedit /deletevalue nointegritychecks
-						bcdedit /deletevalue loadoptions
-						bcdedit /debug off
-						bcdedit /deletevalue nx
+						$SecureBootStatus = (Get-CimInstance -Namespace "root\WMI" -ClassName "MS_SecureBoot").SecureBootEnabled
+						if ($SecureBootStatus -eq $true) {
+							Write-Host $([string]::Format($MSGs.'12a'))
+						} else {
+							Write-Host $([string]::Format($MSGs.'12b'))
+							bcdedit /deletevalue nointegritychecks
+							bcdedit /deletevalue loadoptions
+							bcdedit /debug off
+							bcdedit /deletevalue nx
+						}
 						# Deep Checking Windows for corruption
 						Write-Host $([string]::Format($MSGs.'13'))
 						Repair-WindowsImage -Online -ScanHealth
