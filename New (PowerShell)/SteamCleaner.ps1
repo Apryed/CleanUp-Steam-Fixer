@@ -150,11 +150,13 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 				Get-NetAdapter | Foreach-object { Disable-NetAdapter -Name $_.Name -Confirm:$false }
 				Clear-DnsClientCache
 				Get-NetAdapter | Foreach-object { Enable-NetAdapter -Name $_.Name }
-				$script:elapsed = 0
+				$script:pingResult = $null
 				Do {
-					Start-Sleep -Seconds 5
-					$elapsed += 5
-				} While ( -Not (Get-NetAdapter | Where-Object { $_.Status -eq "Up" -and $_.LinkSpeed -gt 0 }) -and $elapsed -lt 30)
+					$pingResult = Test-Connection -ComputerName google.com -Count 1 -Quiet
+					If (-not $pingResult) {
+						Start-Sleep -Seconds 3
+					}
+				} While (-not $pingResult)
 				# Repairing Steam Service
 				Write-Host $([string]::Format($MSGs.'19'))
 				while ( -Not (Get-Process "Steam" -ErrorAction SilentlyContinue) ){
