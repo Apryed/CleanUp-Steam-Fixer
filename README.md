@@ -78,4 +78,5 @@ Note 2: PowerShell 5.1 requieres to launch the `Start.bat` which is beside it.
 
 #### Testers
 
-Alejandro 'anbyro' Silva Marin
+Alejandro 'anbyro' Silva Marin - Bugs found : 3
+Zeki
