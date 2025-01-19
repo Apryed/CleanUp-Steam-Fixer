@@ -134,6 +134,7 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 						$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 						Register-ScheduledTask -Action $Action -Principal $Principal -Trigger $Trigger -Settings $Settings -TaskName $TaskName -Description "${TaskName} Task" | Out-Null
 						Write-Host $([string]::Format($MSGs.'17'))
+						# ! En algunos PC esta "PAUSA" se la saltan ( Además de mostrar un mensaje de pulsar cualquier tecla para continuar )
 						[System.Console]::ReadKey($true) | Out-Null
 						Restart-Computer -Force
 					}
