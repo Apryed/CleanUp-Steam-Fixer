@@ -51,7 +51,7 @@ After that, it restart the PC on command so fixes take place.
 
 # Ok, but HOW DO I USE IT?
 
-Step 1 : Download the PowerShell folder or the .bat file you want [Manual](../../releases/latest/download/Steam-Cleaner-Checker-Fixer-UserDefined.bat) or [Automatic](../../releases/latest/download/Steam-Cleaner-Checker-Fixer.bat).
+Step 1 : Download the [PowerShell zip (English Only)](../../releases/latest/download/Steam-Cleaner-Checker-Fixer-UserDefined.bat) or the .bat file you want [Manual](../../releases/latest/download/Steam-Cleaner-Checker-Fixer-UserDefined.bat) or [Automatic](../../releases/latest/download/Steam-Cleaner-Checker-Fixer.bat).
 
 Step 2 : Right click the downloaded file and click on Properties, then click "Unlock" on the bottom right corner and accept.
 
