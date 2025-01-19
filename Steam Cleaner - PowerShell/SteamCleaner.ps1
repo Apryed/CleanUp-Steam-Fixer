@@ -94,8 +94,8 @@ Switch (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 						# Fully Close Steam
 						try {
 							(Get-Process "steamservice", "Steam").id 2>$null | ForEach-Object {
-								Stop-Process -Id $_ -Force
-								Wait-Process -Id $_
+								Stop-Process -Id $_ -Force 2>$null
+								Wait-Process -Id $_ 2>$null
 							}
 							Start-Sleep -Seconds 5
 						} catch {
