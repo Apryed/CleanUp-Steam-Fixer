@@ -1,6 +1,7 @@
-# CleanUp-Steam-Fixer ( Windows Only )
+# Steam Cleaner ( Windows Only )
 
-Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error, check Windows for inconsistencies ( And fix them ) and Updates.
+Formerly : `CleanUp-Steam-Fixer
+`Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error, check Windows for inconsistencies ( And fix them ) and Updates.
 
 ## Will it FULLY FIX my problem?
 
