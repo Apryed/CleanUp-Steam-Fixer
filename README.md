@@ -1,23 +1,12 @@
-# FINALLY - CODE UPGRADE
-
-A rework on the code has gone through. It's been upgraded to PowerShell 5.1 ( Which is installed by default on Win 10 ) - Proved ( Lower versions needs to be tested ).
-It also includes the new way on how steam handles account signatures.
-
-Note: Batch file SHOULD work fine, will test if it doesn't fail while testing if CMD has elevated rights.
-
-If in need, you can always install the latest version of "[PowerShell](https://learn.microsoft.com/es-es/powershell/scripting/install/installing-powershell-on-windows)". Current latest PowerShell version: 7.4.6.
-
-Note 2: PowerShell 5.1 requieres to launch the `Start.bat` which is beside it.
-
 # CleanUp-Steam-Fixer ( Windows Only )
 
-Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error in CSGO, check Windows for inconsistencies ( And fix them ) and Updates.
+Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error, check Windows for inconsistencies ( And fix them ) and Updates.
 
 ## Will it FULLY FIX my problem?
 
 While it is not 100% guarantee it will fix your problem, it is definitely one of the easiest ways to check multiple problems at once. But most of the cases are contained here, so I am confident it will be fixed.
 
-# What's the use?
+## What's the use?
 
 Steam becomes corrupted and bulky with the passing of time ( Either by Updates, wrong system shutdowns, system errors, friends -or ourself- changing profile picture too much and so on ).
 Sometimes we get [&#34;VAC AUTHENTICATION ERROR&#34;](https://support.steampowered.com/kb_article.php?ref=2117-ILZV-2837) on CSGO - Don't know about other games.
@@ -55,7 +44,7 @@ Step 1 : Download the [PowerShell zip](../../releases/latest/download/Steam-Clea
 
 Step 2 : Right click the downloaded file and click on Properties, then click "Unlock" on the bottom right corner and accept.
 
-Step 3 : Now run it as Administrator ( Right click the file ).
+Step 3 : Now run it as Administrator ( Right click the file ). - For PowerShell version `Start.bat` is the program to run as Admin.
 
 For Batch : Step 4 : Select language.
 
@@ -69,6 +58,23 @@ Step 8 : Press "S" and wait for Steam to open. Let it **FULLY** open ( It will n
 
 Step 9 : Hope for the best.
 
-# How do I know it is safe?
+## How do I know it is safe?
 
 PowerShell Scripts and Batch files are nothing more than a bunch of default windows commands put all together. You can read my file by doing right click on it and selecting "Edit", you can even change it yourself. If you do change it and send it to others, remember to commend me on your program.
+
+## FINALLY - CODE UPGRADE
+
+A rework on the code has gone through. It's been upgraded to PowerShell 5.1 ( Which is installed by default on Win 10 ) - Proved ( Lower versions needs to be tested ).
+It also includes the new way on how steam handles account signatures.
+
+Note: Batch file SHOULD work fine, will test if it doesn't fail while testing if CMD has elevated rights.
+
+If in need, you can always install the latest version of "[PowerShell](https://learn.microsoft.com/es-es/powershell/scripting/install/installing-powershell-on-windows)". Current latest PowerShell version: 7.4.6.
+
+Note 2: PowerShell 5.1 requieres to launch the `Start.bat` which is beside it.
+
+### Special thanks to:
+
+#### Testers
+
+Alejandro 'anbyro' Silva Marin
