@@ -1,7 +1,6 @@
 # Steam Cleaner ( Windows Only )
 
-Formerly : `CleanUp-Steam-Fixer
-`Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error, check Windows for inconsistencies ( And fix them ) and Updates.
+Formerly : `CleanUp-Steam-Fixer `Delete old unused Steam Files, fix steam Service, implement various fixes for VAC Authentication Error, check Windows for inconsistencies ( And fix them ) and Updates.
 
 ## Will it FULLY FIX my problem?
 
@@ -78,5 +77,10 @@ Note 2: PowerShell 5.1 requieres to launch the `Start.bat` which is beside it.
 
 #### Testers
 
-Alejandro 'anbyro' Silva Marin - Bugs found : 3
-Zeki
+| Name                                                                   | Bugs Found |
+| ---------------------------------------------------------------------- | :--------: |
+| Alejandro 'anbyro' Silva Marin                                         |     3     |
+| Puerta                                                                 |     2     |
+| [Nicolás &#39;Dankrani&#39; Pla Mollá](https://github.com/Dankranikun) |     1     |
+| [Agustin &#39;Griper&#39; Martínez](https://github.com/Griperlight)      |            |
+| Zeki                                                                   |            |
